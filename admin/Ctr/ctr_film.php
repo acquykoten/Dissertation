@@ -81,7 +81,7 @@ if(isset($_REQUEST['insert_film'])){
         </script>
         <?php
     }
-    elseif($last_id =$obj->insertDataFilm($name,$img,$description,$totalE,$length,$year,$country,$dateUp,$stt))
+    elseif($last_id=$obj->insertDataFilm($name,$img,$description,$totalE,$length,$year,$country,$dateUp,$stt))
     {
         if(isset($_POST["film_type"]))
         {
@@ -90,7 +90,8 @@ if(isset($_REQUEST['insert_film'])){
 
                 foreach($_POST["film_type"] as $idtl)
                 {
-                    $type->postFilm_Type($last_id,$idtl);
+					echo $last_id.'-'.$idtl;
+						$type->postFilm_Type($last_id,$idtl);
                 }
             }
         }
@@ -272,7 +273,7 @@ if(isset($_REQUEST['insert_episode']))
     */
    // extract($obj->getByIdE($id_film));
     extract($_REQUEST);
-    if(empty($name)||$nameE <0) {
+    if(empty($name)) {
         ?>
         <script language="JavaScript">
             window.alert("Please enter a  Episode name");

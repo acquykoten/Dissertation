@@ -1,5 +1,5 @@
 <?php
-require_once("admin/Entity/crud_user.php");
+include("admin/Entity/crud_user.php");
 include_once("admin/Ctr/footer.php");
 //include("admin/Entity/crud_film.php");
   if(!class_exists('crud_film')){ require_once('admin/Entity/crud_film.php'); }

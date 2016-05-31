@@ -19,8 +19,9 @@
 	?>
     <div id="cn-box">
     	<div>
-        	<a href="index.php?ac=detail&id_film=<?php echo $r['id_film']; ?>"><img style="width:154px; height:180px;border:solid 1px #000000;margin-left: -3px;" src="image/film/<?php echo $r['img']; ?>" /></a>
-        </div>
+        	<a href="index.php?ac=detail&id_film=<?php echo $r['id_film']; ?>"><img style="width:154px; height:180px;border:solid 1px #000000;margin-left: -3px;" src="image/film/<?php echo $r['img']; ?>" />
+			</a>
+		</div>
         <div style="text-align:left; margin:5px 0px 0px 0px"><a style="text-decoration:none;color: #44e2ff; font-size: 14px" href="index.php?ac=detail&id_film=<?php echo $r['id_film']; ?>">
 				<?php
 				$film_name =$r['film_name'];
@@ -34,8 +35,11 @@
 				<?php
 				echo $r['length_movies'].' phút' ?>
 			</a></div>
-    </div>
-    <?php } ?>
+		<div>
+		</div>
+
+	</div>
+		<?php } ?>
 	<div class="xoa"></div>
 </div>
 <div class="update">

@@ -95,6 +95,42 @@
          <div class="assess">
          <p class="movie-detail-h2" style="margin-left: 10px; margin-bottom: 10px; font-size:20px " >Đánh Giá Phim <span style="font-size: 12px;
     color: #ddd;">(<?php echo $r['total_Assess'] ?>)</span></p>
+			 <div class="star-icon-a">
+				 <?php
+				 $sql = "select point from assess
+    where id_film='" .$r['id_film']."' ";
+						$temp = $pdo->query($sql);
+						$data = $temp->fetchAll(PDO::FETCH_ASSOC);
+						$a1 = [];
+						foreach($data as $p){
+							$a1=$p;
+						}
+						echo $a1;
+						echo $data;
+				 ?>
+				 <div style="float: left; width: 270px;">
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left"  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/star1.png'">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left"  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/1.png'">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+					 &nbsp;
+					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
+
+				 </div>
+			 </div>
          </div>
 		<div class="xoa"></div>
 		<div class="banner-actor">

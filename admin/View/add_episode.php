@@ -46,7 +46,7 @@ $obj= new episode();
     <button class="well well-lg">
         <h3>Insert Your Data</h3>
         <form action="?cache=Ctr&module=ctr_film" method="post" data-parsley-validate>
-            Episode Name <input   type="number" name="name" id="name" placeholder="Episode Name" data-parsley-trigger="change" data-parsley-required="true">
+            Episode Name <input   type="text" name="name" id="name" placeholder="Episode Name" data-parsley-trigger="change" data-parsley-required="true">
             -Movie Name
             <?php
             if($_REQUEST['idF']!=0) {

@@ -10,7 +10,7 @@ $film = new crud_film();
     function load_ajax(id)
     {
         $.ajax({
-            url : "Ctr/ctr_cmt.php", // g?i ajax ??n file result.php
+            url : "admin/Ctr/ctr_cmt.php", // g?i ajax ??n file result.php
             type : "get", // ch?n ph??ng th?c g?i là get
             dateType:"text", // d? li?u tr? v? d?ng text
             data : {
@@ -24,7 +24,7 @@ $film = new crud_film();
     function delete_ajax(id)
     {
         $.ajax({
-            url : "Ctr/delete_cmt.php", // g?i ajax ??n file result.php
+            url : "admin/Ctr/delete_cmt.php", // g?i ajax ??n file result.php
             type : "get", // ch?n ph??ng th?c g?i là get
             dateType:"text", // d? li?u tr? v? d?ng text
             data : {

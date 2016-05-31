@@ -11,7 +11,21 @@
 
 	?>
 	<div class="lf-l" >
-    	<div class="lf-name" style=" "><h3><?php echo $r['film_name'] ?></h3></div>
+    	<div class="lf-name">
+			<div class="lf-img"><img style="width: 100%; height: 100%" src="image/film/<?php echo $r['img'];?>"></div>
+			<div class="lf-tile"><h3><?php echo $r['film_name'] ?></h3></div>
+			<div class="lf-d">
+				<p style="margin-left: 10px; margin-top: 20px"><?php
+					$d = $r['description'];
+					if(strlen($d)>200) {
+						$d = mb_substr($d, 0, 200,'UTF-8').' ...';
+					}
+					echo $d;
+					  ?>
+					[<a href="index.php?ac=detail&id_film=<?php echo $id_film ?>">xem thêm</a>]
+				</p>
+			</div>
+		</div>
         <div class="lf-url" id ="epi">
 			<?php
 			if(($_REQUEST['ac'])=='xem'){

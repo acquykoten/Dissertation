@@ -64,6 +64,21 @@ ul.drop li:hover > ul.drop{display:block;}
 /*------------------body-l-m---------------------*/
 .body-l-m{width:100%;height:aut;margin:10px 0px 0px 0px;}
 .update{width:100%;height:auto;margin:0px 0px 0px 0px;}
+.top-img{
+	position: absolute;
+	color: #fff;
+	background: #A21D0A;
+	font-size: 11px;
+	font-weight: bold;
+	float: left;
+	padding: 4px;
+	text-shadow: 1px 1px 2px #111;
+	left: 2px;
+	top: 5px;
+	white-space: nowrap;
+	display: inline-block;
+	box-shadow: 2px 2px 3px 0px
+}
 
 /*------------------body-l-m---------------------*/
 .body-l-b{width:100%;height:auto;background-color:#33C;margin:10px 0px 10px 0px;}
@@ -132,20 +147,47 @@ padding:20px 0px 10px 0px;
 	clear:right;
 	float:right;
 	width:50%;
-	height:100px;
+	height:80px;
 	background-color:#1a1a1a;
 	margin: 10px 10px 0px 0px;
+}
+.star-icon-a{
+	width: 100%;
+	height: 30px;
+	margin-left: 10px;
 }
 /*------------------linkfilm---------------------*/
 .linkfilm{width:100%;height:auto;background-image:url(../image/br-all.png)}
 .lf-l{width:64%;height:auto;background-image:url(image/br-test.jpg);float:left}
 .lf-r{width:35%;height: auto;float:right}
-.lf-name{width:100%;height:30px;background-image:url(../image/br-test.jpg); color:#E3C70F}
+.lf-name{width:100%;height:210px;background-image:url(../image/br-test.jpg);}
 .lf-url{width:100%;height:400px;background-color:#666;margin:5px 0px 0px 0px}
 .lf-ep{width:100%;height:auto;background-image:url(../image/br2.jpg);color:#646161;margin:10px 0px 0px 0px}
 .lf-cm{width:100%;height:auto;background-image:url(../image/br2.jpg);color:#646161;margin:10px 0px 0px 0px}
 .lf-cep{margin:5px 0px 0px 10px}
-
+.lf-img{
+	width: 150px;
+	height: 200px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.lf-tile{
+	width: auto;
+	height: 50px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+	color: #dacb46;
+}
+.lf-d{
+	width: 450px;
+	float: left;
+	margin-left: 20px;
+	background-color: #1a1a1a;
+	color: #bbb;
+	height: 140px;
+}
 /*------------------linkfilm---------------------*/
 .abc{
 	color: #985f0d;

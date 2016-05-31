@@ -163,7 +163,7 @@ class film_type extends crud_film{
     public function postFilm_Type($idF,$idT){
         $sql = "INSERT INTO film_type SET id_film=:idF,id_type=:idT";
         $q = $this->conn->prepare($sql);
-        $q->execute(array(':idF'=>$idF,':idT'=>$idT));
+        $q->execute(array(':idF'=>$idF,':idT'=>$idT));	
         return true;
         $this->$conn=null;
     }
