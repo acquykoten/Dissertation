@@ -96,39 +96,52 @@
          <p class="movie-detail-h2" style="margin-left: 10px; margin-bottom: 10px; font-size:20px " >Đánh Giá Phim <span style="font-size: 12px;
     color: #ddd;">(<?php echo $r['total_Assess'] ?>)</span></p>
 			 <div class="star-icon-a">
+				 <script language="javascript">
+					 function assess(p)
+					 {
+						 $.ajax({
+							 url : "assess.php", // g?i ajax ??n file result.php
+							 type : "get", // ch?n ph??ng th?c g?i là get
+							 dateType:"text", // d? li?u tr? v? d?ng text
+							 data : {
+								 id : $('#id_f').val()
+								 p : p
+							 },
+							 success : function (result){
+								 $('#show').html(result);
+							 }
+						 });
+					 }
+				 </script>
 				 <?php
-				 $sql = "select point from assess
-    where id_film='" .$r['id_film']."' ";
+
+				 $sql = "select point from assess where id_film='" .$r['id_film']."' ";
 						$temp = $pdo->query($sql);
 						$data = $temp->fetchAll(PDO::FETCH_ASSOC);
-						$a1 = [];
 						foreach($data as $p){
-							$a1=$p;
+							$a[]=$p['point'];
 						}
-						echo $a1;
-						echo $data;
+				 $t_p=array_sum($a)/$r['total_Assess'];
 				 ?>
-				 <div style="float: left; width: 270px;">
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left"  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/star1.png'">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left"  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/1.png'">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-					 &nbsp;
-					 <img src="image/star1.png" style="width: 20px; height: 20px; float: left">
-
+				 <input type="text" hidden id="id_f" value="<?php echo $r['id_film'] ?>">
+				 <div id="show" style="background-color: #0000FF; color: red; width: 30px; height: 10px"></div>
+				 <div style="float: left; width: 270px;" id="a">
+					 <?php
+					 for($i =0;$i < $t_p; $i++) {
+						 ?>
+						 <img src="image/1.png" style="width: 20px; height: 20px; float: left"
+							  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/1.png'" alt="<?php echo $i+1?>" onclick="assess(<?php echo $i+1?>)">
+						 &nbsp;
+						 <?php
+					 }
+					 for($i =0;$i <(10-$t_p); $i++){
+						 ?>
+						 <img src="image/star1.png" style="width: 20px; height: 20px; float: left"
+							  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/star1.png'" alt="<?php echo $t_p+$i+1; ?>" onclick="assess(<?php echo $i+1?>)">
+						 &nbsp;
+					 <?php
+					 }
+					 ?>
 				 </div>
 			 </div>
          </div>
