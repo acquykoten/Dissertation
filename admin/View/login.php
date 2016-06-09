@@ -4,7 +4,7 @@ if(!isset($_SESSION))
     session_start();
 $obj = new crud_user();
 if(isset($_POST['login'])) {
-    $pass = ($_POST['password']);
+    $pass = md5($_POST['password']);
     $new_email = $_POST['email'];
     if (($obj->getByEmail($new_email,$pass))){
         extract($obj->getByEmail($new_email,$pass));

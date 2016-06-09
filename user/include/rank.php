@@ -9,7 +9,8 @@
 			{ 
 	                $film_name=$r['film_name'];
 		 ?>
-         <td style="width:50x; height:80px; padding-left:10px;">
+                <tr>
+                <td style="width:50x; height:80px; padding-left:10px;">
          <a href="index.php?ac=detail&id_film=<?php echo $r['id_film'] ?>">	
 <img src="image/film/<?php echo $r['img'] ?>" width="90px" height="100px"></a>
 </td>
@@ -64,9 +65,9 @@ Lượt xem:<?php echo $r['total_viewer'] ?>
     <div class="xoa"></div>
 </div>
 <div class="rank" style="background-image:url(../../image/br-test.jpg)">
-	<div class="name-box"><h2 class="star-icon">Top <!--Tuần --></h2></div>
+	<div class="name-box"><h2 class="star-icon">Trailer Mới <!--Tuần --></h2></div>
 <?php
-	$sql="Select id_film,film_name,total_viewer,img from film order by total_viewer desc, update_day desc limit 5";
+	$sql="SELECT * FROM film WHERE not EXISTS (select episode.id_film FROM episode WHERE episode.id_film = film.id_film) ORDER BY film.total_viewer DESC limit 5";
 	$re=$pdo->query($sql);
 ?>
     <div class="xh-box">

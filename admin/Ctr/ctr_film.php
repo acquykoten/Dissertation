@@ -90,8 +90,11 @@ if(isset($_REQUEST['insert_film'])){
 
                 foreach($_POST["film_type"] as $idtl)
                 {
-					echo $last_id.'-'.$idtl;
-						$type->postFilm_Type($last_id,$idtl);
+					var_dump($last_id,$idtl);
+                    $last_id = (int)$last_id;
+                    $idtl = (int)$idtl;
+                    var_dump($last_id,$idtl);
+                    $type->postFilm_Type($last_id,$idtl);
                 }
             }
         }

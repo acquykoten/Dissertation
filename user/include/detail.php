@@ -97,50 +97,61 @@
     color: #ddd;">(<?php echo $r['total_Assess'] ?>)</span></p>
 			 <div class="star-icon-a">
 				 <script language="javascript">
-					 function assess(p)
-					 {
-						 $.ajax({
-							 url : "assess.php", // g?i ajax ??n file result.php
-							 type : "get", // ch?n ph??ng th?c g?i là get
-							 dateType:"text", // d? li?u tr? v? d?ng text
-							 data : {
-								 id : $('#id_f').val()
-								 p : p
-							 },
-							 success : function (result){
-								 $('#show').html(result);
-							 }
-						 });
-					 }
+						 function a(p)
+						 {
+							 $.ajax({
+								 url : "a1.php", // g?i ajax ??n file result.php
+								 type : "get", // ch?n ph??ng th?c g?i là get
+								 dateType:"text", // d? li?u tr? v? d?ng text
+								 data : {
+									 p: p,
+									 id: $('#id_f').val()
+								 },
+								 success : function (result){
+									 $('#result').html(result);
+								 }
+							 });
+						 }
 				 </script>
 				 <?php
-
 				 $sql = "select point from assess where id_film='" .$r['id_film']."' ";
 						$temp = $pdo->query($sql);
 						$data = $temp->fetchAll(PDO::FETCH_ASSOC);
-						foreach($data as $p){
-							$a[]=$p['point'];
-						}
-				 $t_p=array_sum($a)/$r['total_Assess'];
+				 $a = [];
+				 $t_p=0;
+					 foreach ($data as $p) {
+						 $a[] = $p['point'];
+					 }
+				 if(!empty($a)) {
+					 $sql_a = "select count(id_film) from assess where id_film='" .$r['id_film']."' ";
+					 $temp = $pdo->query($sql_a);
+					 $row = $temp->fetchAll(PDO::FETCH_COLUMN);
+					 $t_p =array_sum($a) /$row[0];
+					 $t_p = substr($t_p,0,1);
+					 $t_p = (int)$t_p;
+				 }
 				 ?>
 				 <input type="text" hidden id="id_f" value="<?php echo $r['id_film'] ?>">
-				 <div id="show" style="background-color: #0000FF; color: red; width: 30px; height: 10px"></div>
+				 <div id="result" style="color: red; width: 200px; height: 10px;"></div>
 				 <div style="float: left; width: 270px;" id="a">
 					 <?php
 					 for($i =0;$i < $t_p; $i++) {
 						 ?>
-						 <img src="image/1.png" style="width: 20px; height: 20px; float: left"
-							  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/1.png'" alt="<?php echo $i+1?>" onclick="assess(<?php echo $i+1?>)">
+						 <!---->
+						 <img src="image/1.png" id="p" style="width: 20px; height: 20px; float: left" onmouseover="this.src='image/0.png'" onmouseout="this.src='image/1.png'" onclick="a(<?php echo $i+1?>)" alt="<?php echo $i+1?>"">
 						 &nbsp;
 						 <?php
 					 }
-					 for($i =0;$i <(10-$t_p); $i++){
-						 ?>
-						 <img src="image/star1.png" style="width: 20px; height: 20px; float: left"
-							  onmouseover="this.src='image/0.png'" onmouseout="this.src='image/star1.png'" alt="<?php echo $t_p+$i+1; ?>" onclick="assess(<?php echo $i+1?>)">
-						 &nbsp;
-					 <?php
-					 }
+						 for ($i = 0; $i <(10 - $t_p); $i++) {
+							 ?>
+							 <!-- onmouseover="this.src='image/0.png'" onmouseout="this.src='image/star1.png'" -->
+							 <img src="image/star1.png" onmouseover="this.src='image/0.png'"
+								  onmouseout="this.src='image/star1.png'" style="width: 20px; height: 20px; float: left"
+								  onclick="a(<?php echo $i + 1 ?>)" alt="<?php echo $t_p + $i + 1; ?>"">
+
+							 &nbsp;
+							 <?php
+						 }
 					 ?>
 				 </div>
 			 </div>

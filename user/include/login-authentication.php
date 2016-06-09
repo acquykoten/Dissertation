@@ -14,7 +14,7 @@
 		else
 		{
 			//$pass=md5($_POST["pass"]);
-			$pass=($_POST["pass"]);		
+			$pass=md5($_POST["pass"]);
 			$sql="select * from user where username='$user' and password='$pass'";
 			$stm=$pdo->prepare($sql); 
 			$stm->execute();

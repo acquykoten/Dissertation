@@ -126,8 +126,8 @@ padding:20px 0px 10px 0px;
 .detail-l{width:64%;height:auto;background-image:url(../image/br-test.jpg);float:left;min-height:500px;}
 .detail-r{width:35%;height:auto;float:right;}
 .dt-box{width:300px;height:350px;margin:10px 5px 10px 10px;float:left}
-.gt-film{width:100%;height:auto;background-image:url(../image/br2.jpg);margin:10px 10px 0px 0px;float:right}
-.tt-film{width:96%;height:auto; color:#646161;background-color:#1a1a1a;margin:10px 0px 0px 2%;float:left}
+.gt-film{width:100%;height:auto;background-color: #1a1a1a;margin:10px 10px 0px 0px;float:right}
+.tt-film{width:96%;height:auto; color:#646161;background-color:#1a1a1a;margin:10px 0px 0px 2%;float:left; margin-bottom: 10px}
 .gt-f-t{width:50%;height:25%; color:#E3C70F;margin-top: -20px; margin-bottom:10px; float:right}
 .gt-f-b{width:50%;height:70%; margin-left: 10px; float:right;clear:right}
 .gt-f-b-l{width:100%;height:100%;color:#646161;float:left; margin-left:10px; margin-top:10px}

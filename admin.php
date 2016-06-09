@@ -2,7 +2,7 @@
 include("admin/Entity/crud_user.php");
 include_once("admin/Ctr/footer.php");
 //include("admin/Entity/crud_film.php");
-  if(!class_exists('crud_film')){ require_once('admin/Entity/crud_film.php'); }
+ include_once('admin/Entity/crud_film.php'); 
 include_once("admin/Entity/crud_type.php");
 //include_once("Entity/connDB.php");
 session_start();
@@ -31,9 +31,6 @@ else {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script language="javascript" src="http://freetuts.net/public/cdn/jquery/jquery-2.2.0.min.js"></script>
-  <link href="admin/Css/bootstrap/js/bootstrap-formhelpers-countries.js"/>
-  <link href="admin/Css/bootstrap/js/bootstrap-formhelpers-currencies.js"/>
-
   <link rel="icon" href="admin/img/icon_film.png" />
 </head>
 
