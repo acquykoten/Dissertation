@@ -29,6 +29,9 @@
 		if($_REQUEST['ac']=="flyear")
 			include"kqfilmle.php";
 		
+		if($_REQUEST['ac']=="ftrailer")
+			include "trailer.php";
+		
 		if($_REQUEST['ac']=="fbyear")
 			include"kqfilmbo.php";
 			

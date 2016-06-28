@@ -32,6 +32,9 @@ if(isset($_REQUEST['episode_submit'])){
 				include"filmbo.php";
 			?>
         </li>
+		<li class="type">
+			<b><a href="index.php?ac=ftrailer" style="text-decoration:none;color:#FFF">TRAILER</b></a>
+		</li>
     </ul>
     <div class="xoa"></div>
 </div>
