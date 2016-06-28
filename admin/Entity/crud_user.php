@@ -9,8 +9,8 @@ class crud_user extends connDB{
         $q->bindParam(':id',$id);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
-            return $data;
         $this->conn->closeCN();
+        return $data;
     }
     public function getByEmail($email,$pass){
         $sql="SELECT * FROM user WHERE email= :email and password=:pass AND state =1";
@@ -20,8 +20,6 @@ class crud_user extends connDB{
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
         return $data;
-        $conn=null;
-
     }
     public function update($id,$name,$email,$password,$table){
 
@@ -33,14 +31,12 @@ class crud_user extends connDB{
         $q->bindParam(':password',$password);
         $q->execute();
         return true;
-        $conn=null;
     }
     public function insertData($name,$email,$password,$table){
         $sql = "INSERT INTO $table SET name=:name,email=:email,password=:password";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':name'=>$name,':email'=>$email,':password'=>$password));
         return true;
-        $conn=null;
     }
     //delete a user
     public function deleteData($id,$table){
@@ -49,7 +45,6 @@ class crud_user extends connDB{
         $q->bindParam(':id',$id);
         $q->execute();
         return true;
-        $conn=null;
     }
     public  function updateCmt($idCmt){
         $sql = "UPDATE comment SET state=1 WHERE id_cmt=:id";
@@ -57,7 +52,6 @@ class crud_user extends connDB{
         $q->bindParam(':id',$idCmt);
         $q->execute();
         return true;
-        $conn=null;
     }
     public function deleteDataCmt($id_cmt){
         $sql="DELETE FROM comment WHERE id_cmt=:id";
@@ -65,6 +59,5 @@ class crud_user extends connDB{
         $q->bindParam(':id',$id_cmt);
         $q->execute();
         return true;
-        $conn=null;
     }
 }

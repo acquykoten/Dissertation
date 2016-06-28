@@ -7,8 +7,8 @@ class crud_type extends connDB{
         $q->bindParam(':id',$id);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        return $data;
         $this->conn=null;
+        return $data;
     }
     public  function getByName($name){
         $sql="SELECT * FROM type WHERE type_name= :name";
@@ -16,8 +16,8 @@ class crud_type extends connDB{
         $q->bindParam(':name',$name);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        return $data;
         $this->conn=null;
+        return $data;
     }
     public function update($id,$name){
 
@@ -27,14 +27,12 @@ class crud_type extends connDB{
         $q->bindParam(':name',$name);
         $q->execute();
         return true;
-        $conn=null;
     }
     public function insertData($name){
         $sql = "INSERT INTO type SET type_name=:name";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':name'=>$name));
         return true;
-        $conn=null;
     }
     public function deleteDataType($id){
         $sql="DELETE FROM type WHERE id_type=:id";
@@ -42,7 +40,6 @@ class crud_type extends connDB{
         $q->bindParam(':id',$id);
         $q->execute();
         return true;
-        $conn=null;
     }
     public  function showCmt(){
         $sql="SELECT * FROM comment WHERE state =1";

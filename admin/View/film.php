@@ -33,7 +33,6 @@ $film_a = new film_actor();
             <th>Director</th>
             <th>Total Episode</th>
             <th>Total viewer</th>
-            <th>Total Asses</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -79,7 +78,6 @@ $film_a = new film_actor();
                             ?>
                         <td><?php echo $value["total_episode"] ?></td>
                         <td><?php echo $value["total_viewer"] ?></td>
-                        <td><?php echo $value["total_Assess"] ?></td>
                         <td>
                             <button class="btn"><a
                                     href="?cache=view&module=update_film&update_id=<?php echo $id ?>">Edit</a>
@@ -129,7 +127,6 @@ $film_a = new film_actor();
                     </td>
                     <td><?php echo $values["total_episode"] ?></td>
                     <td><?php echo $values["total_viewer"] ?></td>
-                    <td><?php echo $values["total_Assess"] ?></td>
                     <td>
                         <button class="btn"><a
                                 href="?cache=view&module=update_film&update_id=<?php echo $id ?>">Edit</a>
