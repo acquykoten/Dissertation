@@ -116,6 +116,7 @@
 			 $data = $temp->fetchAll(PDO::FETCH_ASSOC);
 			 $a = [];
 			 $t_p=0;
+			 $d = 0;
 			 foreach ($data as $p) {
 				 $a[] = $p['point'];
 			 }
@@ -123,13 +124,15 @@
 				 $sql_a = "select count(id_film) from assess where id_film='" .$r['id_film']."' ";
 				 $temp = $pdo->query($sql_a);
 				 $row = $temp->fetchAll(PDO::FETCH_COLUMN);
+				 if($row[0]!=null)
+					 $d = $row[0];
 				 $t_p =array_sum($a) /$row[0];
 				 $t_p = substr($t_p,0,1);
 				 $t_p = (int)$t_p;
 			 }
 			 ?>
          <p class="movie-detail-h2" style="margin-left: 10px; margin-bottom: 10px; font-size:20px " >Đánh Giá Phim <span style="font-size: 12px;
-    color: #ddd;">(<?php echo $row[0] ?>)</span></p>
+    color: #ddd;">(<?php echo $d ?>)</span></p>
 			 <div class="star-icon-a">
 			
 				 <input type="text" hidden id="id_f" value="<?php echo $r['id_film'] ?>">

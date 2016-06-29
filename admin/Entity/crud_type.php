@@ -26,6 +26,7 @@ class crud_type extends connDB{
         $q->bindParam(':id',$id);
         $q->bindParam(':name',$name);
         $q->execute();
+        $con=null;
         return true;
     }
     public function insertData($name){
@@ -39,6 +40,7 @@ class crud_type extends connDB{
         $q = $this->conn->prepare($sql);
         $q->bindParam(':id',$id);
         $q->execute();
+        $con=null;
         return true;
     }
     public  function showCmt(){
@@ -50,6 +52,7 @@ class crud_type extends connDB{
             while ($r = $q->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $r;
             }}catch (Exception $e){}
+        $con=null;
         return $data;
     }
 }

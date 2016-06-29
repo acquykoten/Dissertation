@@ -16,8 +16,8 @@ class crud_film extends connDB{
         $q = $this->conn->prepare($sql);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
+        $con=null;
         return $data;
-        $this->conn=null;
     }
     // get all data in table
     public  function show($table){
@@ -38,9 +38,8 @@ class crud_film extends connDB{
         $q->bindParam(':name', $name);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        return $data;
-        $con= $this->conn;
         $con=null;
+        return $data;
     }
     // search by name movie,get data all table
     public  function searchFilm($name,$table){
@@ -55,7 +54,6 @@ class crud_film extends connDB{
                 $data[] = $r;
             }}catch (Exception $e){}
         return $data;
-        $this->conn=null;
     }
     public  function searchFilmF($name){
         $sql = "SELECT * FROM film WHERE film.film_name LIKE :namef";
@@ -69,7 +67,6 @@ class crud_film extends connDB{
                 $data[] = $r;
             }}catch (Exception $e){}
         return $data;
-        $this->conn=null;
     }
     //update data a movie
     public function updateFilm($id,$name,$img,$des,$totalE,$length,$year,$country,$updateDay,$stt){
@@ -173,7 +170,6 @@ class film_type extends crud_film{
         $q->bindParam(':idT',$idT);
         $q->bindParam(':id',$idF);
         $q->execute();
-        $this->closeCN();
         return true;
     }
 }
@@ -302,7 +298,6 @@ class actor extends connDB
         $q = $this->conn->prepare($sql);
         $q->bindParam(':id',$id);
         $q->execute();
-        $this->closeCN();
         return true;
 
     }
@@ -310,7 +305,6 @@ class actor extends connDB
         $sql = "INSERT INTO actor SET actor_name=:name,img=:img,sex=:sex";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':name'=>$name,':img'=>$img,':sex'=>$sex));
-        $this->closeCN();
         return true;
     }
     public function updateActor($id,$actor_name,$img,$sex){
@@ -321,7 +315,6 @@ class actor extends connDB
         $q->bindParam(':img',$img);
         $q->bindParam(':sex',$sex);
         $q->execute();
-        $this->closeCN();
         return true;
     }
 }
@@ -341,7 +334,6 @@ class director extends connDB
         $q = $this->conn->prepare($sql);
         $q->bindParam(':id',$id);
         $q->execute();
-        $this->closeCN();
         return true;
 
     }
@@ -349,7 +341,6 @@ class director extends connDB
         $sql = "INSERT INTO director SET director_name=:name,img=:img";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':name'=>$name,':img'=>$img));
-        $this->closeCN();
         return true;
     }
     public function updateDirector($id,$director_name,$img){
@@ -359,7 +350,6 @@ class director extends connDB
         $q->bindParam(':director_name',$director_name);
         $q->bindParam(':img',$img);
         $q->execute();
-        $this->closeCN();
         return true;
     }
 }
@@ -375,7 +365,6 @@ class film_actor extends crud_film{
             while ($r = $q->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $r;
             }}catch (Exception $e){}
-        $this->closeCN();
         return $data;
     }
     public function deleteFilm_Actor($idF,$idA){
@@ -384,7 +373,6 @@ class film_actor extends crud_film{
         $q->bindParam(':id_film',$idF);
         $q->bindParam(':id_actor',$idA);
         $q->execute();
-        $this->closeCN();
         return true;
     }
     public function deleteAllFilm_Actor($idF){
@@ -392,7 +380,6 @@ class film_actor extends crud_film{
         $q = $this->conn->prepare($sql);
         $q->bindParam(':id_film',$idF);
         $q->execute();
-        $this->closeCN();
         return true;
     }
     public function getById_F_A($idF,$idA){
@@ -419,7 +406,6 @@ class film_actor extends crud_film{
         $sql = "INSERT INTO film_actor SET id_actor=:idD,id_film=:idF";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':idF'=>$idF,':idD'=>$idA));
-        $this->closeCN();
         return true;
     }
     public function updateFilm_Actor($idF,$idA){
@@ -428,7 +414,6 @@ class film_actor extends crud_film{
         $q->bindParam(':idA',$idA);
         $q->bindParam(':id',$idF);
         $q->execute();
-        $this->closeCN();
         return true;
     }
 }
@@ -440,7 +425,6 @@ class film_director extends crud_film{
         $q->bindParam(':id_film',$idF);
         $q->bindParam(':id_director',$idD);
         $q->execute();
-        $this->closeCN();
         return true;
     }
     public function deleteAllFilm_Director($idF){
@@ -448,14 +432,12 @@ class film_director extends crud_film{
         $q = $this->conn->prepare($sql);
         $q->bindParam(':id_film',$idF);
         $q->execute();
-        $this->closeCN();
         return true;
     }
     public function insertFilm_Director ($idF,$idD){
         $sql = "INSERT INTO film_director SET id_director=:idD,id_film=:idF";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':idF'=>$idF,':idD'=>$idD));
-        $this->closeCN();
         return true;
     }
     public function getById_F_D($idF,$idD){
@@ -471,7 +453,6 @@ class film_director extends crud_film{
                 $data[] = $r;
             }}catch (Exception $e){}
         */
-        $this->closeCN();
         return $data;
     }
     public function getByAll_FD($idF){
@@ -484,7 +465,6 @@ class film_director extends crud_film{
             while ($r = $q->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $r;
             }}catch (Exception $e){}
-        $this->closeCN();
         return $data;
     }
     public function updateFilm_Director($idF,$idD){
@@ -493,7 +473,6 @@ class film_director extends crud_film{
         $q->bindParam(':idD',$idD);
         $q->bindParam(':id',$idF);
         $q->execute();
-        $this->closeCN();
         return true;
     }
 
