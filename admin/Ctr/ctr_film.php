@@ -241,9 +241,6 @@ if(isset($_REQUEST['update_episode'])) {
 }
 if(isset($_REQUEST['insert_episode']))
 {
-    $errors = array(
-        'error' => 0
-    );
     $nameE   = isset($_POST['name']) ? trim($_POST['name']) : '';
     $id_film   = isset($_POST['id_film']) ? trim($_POST['id_film']) : '';
     $url1   = isset($_POST['url1']) ? trim($_POST['url1']) : '';
@@ -276,17 +273,17 @@ if(isset($_REQUEST['insert_episode']))
     */
    // extract($obj->getByIdE($id_film));
     extract($_REQUEST);
-    if(empty($name)) {
+    if(empty($nameE)) {
         ?>
         <script language="JavaScript">
             window.alert("Please enter a  Episode name");
            // location.href = "?cache=view&module=add_episode";
             window.history.go(-1);
-
         </script>
         <?php
     }
-    elseif($obj->getByNameE($id_film,$nameE)!= null){
+    else
+        if($obj->getByNameE($id_film,$nameE)!= null){
         ?>
         <script language="JavaScript">
             window.alert("Coincide Episode Name!!!");
@@ -295,7 +292,6 @@ if(isset($_REQUEST['insert_episode']))
 
         </script>
         <?php
-
     }
     /*elseif(($name+1)!=$nameE){
         ?>
@@ -307,7 +303,8 @@ if(isset($_REQUEST['insert_episode']))
         </script>
         <?php
     }*/
-    elseif(empty($url1)){
+    else
+        if(empty($url1)){
         ?>
         <script language="JavaScript">
             window.alert("Please enter a  Url!!!");
@@ -315,8 +312,10 @@ if(isset($_REQUEST['insert_episode']))
             window.history.go(-1);
 
         </script>
-    <?php    }
-    elseif($obj->postEpisode($id_film,$nameE,$url1,$url2,$dateUp)){
+    <?php
+        }
+    else
+        if($obj->postEpisode($id_film,$nameE,$url1,$url2,$dateUp)){
         ?>
         <script language="JavaScript">
             window.alert("Create Success!!!");
