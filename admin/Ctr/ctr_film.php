@@ -3,6 +3,7 @@
 $obj = new episode();
 $type = new film_type();
 $trailer = new trailer();
+//INSERT FILM
 if(isset($_REQUEST['insert_film'])){
     $name = trim($_POST['name']);
     //$img = trim($_POST['img']);
@@ -83,27 +84,23 @@ if(isset($_REQUEST['insert_film'])){
     }
     elseif($last_id=$obj->insertDataFilm($name,$img,$description,$totalE,$length,$year,$country,$dateUp,$stt))
     {
-        if(isset($_POST["film_type"]))
-        {
-            if($_POST["film_type"]!="")
-            {
+        if(isset($_POST["film_type"])) {
+            if ($_POST["film_type"] != "") {
 
-                foreach($_POST["film_type"] as $idtl)
-                {
-					var_dump($last_id,$idtl);
+                foreach ($_POST["film_type"] as $idtl) {
                     $last_id = (int)$last_id;
                     $idtl = (int)$idtl;
-                    var_dump($last_id,$idtl);
-                    $type->postFilm_Type($last_id,$idtl);
+                    $type->postFilm_Type($last_id, $idtl);
                 }
             }
+
+            ?>
+            <script language="JavaScript">
+                window.alert("Create Success!!!");
+                location.href = "?cache=view&module=film";
+            </script>
+            <?php
         }
-        ?>
-        <script language="JavaScript">
-            window.alert("Create Success!!!");
-            location.href="?cache=view&module=film";
-        </script>
-        <?php
     }
     else{
         ?>

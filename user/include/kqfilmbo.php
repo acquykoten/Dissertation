@@ -1,7 +1,3 @@
-<div class="xxx">
-	<div class="xx"><a href="index.php">PHIM CN</a>
-	</div>
-</div>
 <div class="all-page">
 
     <div class="ct-film">

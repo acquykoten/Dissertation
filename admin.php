@@ -42,7 +42,7 @@ else {
 <div class="nav">
 <nav class="navbar navbar-inverse" stype="margin-bottom:none;">
   <div class="container">
-  <div class="navbar-header"><a class="navbar-brand">Cartoon Film</a></div>
+  <div class="navbar-header"><a href='index.php' class="navbar-brand">CN Film</a></div>
     <ul class="nav navbar-nav" style="color: #FFF">
       <li class="active"><a href="admin.php">Home</a></li>
       <li class="dropdown">

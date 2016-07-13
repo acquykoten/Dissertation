@@ -49,6 +49,12 @@ $film_a = new film_actor();
             if($e->deleteAllDataE($_REQUEST['del_id'])){
                 echo", Episode";
             }
+            if($film_a->deleteAllFilm_Actor($_REQUEST['del_id'])){
+                echo', Actor';
+            }
+            if($film_d->deleteAllFilm_Director($_REQUEST['del_id'])){
+                echo ', Director';
+            }
         }
 
         }

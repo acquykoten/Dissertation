@@ -7,7 +7,7 @@ class crud_type extends connDB{
         $q->bindParam(':id',$id);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        $this->conn=null;
+        $conn=null;
         return $data;
     }
     public  function getByName($name){
@@ -16,7 +16,7 @@ class crud_type extends connDB{
         $q->bindParam(':name',$name);
         $q->execute();
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        $this->conn=null;
+        $conn=null;
         return $data;
     }
     public function update($id,$name){
